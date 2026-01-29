@@ -1,5 +1,6 @@
-function _init()
 
+function _init()
+    _draw();
 end
 
 function _update()
