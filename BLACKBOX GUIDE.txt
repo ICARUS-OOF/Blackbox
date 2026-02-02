@@ -1,5 +1,12 @@
 -----------BLACKBOX GUIDE-----------
 
+
+HOW TO LAUNCH GAME:
+1. Go to Pico-8 Command Prompt
+2. Type in "LOAD MAIN.P8"
+3. Type in "RUN"
+
+
 CONTROLS:
 Move - UP, DOWN, LEFT, RIGHT Arrow Keys
 Z - Switch Weapons
