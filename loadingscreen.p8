@@ -1,7 +1,8 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
-function _init()
+
+function loadingscreen_init()
 spritetop=81
 spritebottom=97
 stimer=0
@@ -14,40 +15,45 @@ spritedot2=59
 spritedot2max=62
 spritedot3=43
 spritedot3max=46
+timeLeft = 60
+	reload(0x0000, 0x0000, 0x4000, "loadingscreen.p8")
+	camera(0,0)
 end
 
+function loadingscreen_update()
 
-
-function _update()
-
-if stimer<ani_speed then
-	stimer+=1
-	else
-		if spritetop<topportal then
-		spritetop+=1
-		spritebottom+=1
-		spritedot1+=1
-		spritedot2+=1
-		spritedot3+=1
+	if stimer<ani_speed then
+		stimer+=1
 		else
-		spritetop=81
-		spritebottom=97
-		spritedot1=54
-		spritedot2=59
-		spritedot3=43
+			if spritetop<topportal then
+			spritetop+=1
+			spritebottom+=1
+			spritedot1+=1
+			spritedot2+=1
+			spritedot3+=1
+			else
+			spritetop=81
+			spritebottom=97
+			spritedot1=54
+			spritedot2=59
+			spritedot3=43
+			end
+		stimer=0
 		end
-	stimer=0
+
+
+	timeLeft -= 1
+	
+	if (timeLeft <= 0) then
+		isLoadingNewLevel = false
+		player_init()
 	end
-
-
 end
 
 
-function _draw()
+function loadingscreen_draw()
+  map()
 
-cls()
-
-map()
 
 spr(spritedot1,80,0)
 
@@ -67,8 +73,22 @@ spr(spritebottom,64,32)
 
 spr(spritebottom,112,32)
 
-
 end
+
+
+function _init()
+	loadingscreen_init()
+end
+function _update()
+	loadingscreen_update()
+end
+function _draw()
+	cls()
+	map()
+	loadingscreen_draw()
+end
+
+
 __gfx__
 00000000000000001111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000
 00000000000000001111111111111111111111111111111111111111111111111111111100000000000000000000000000000000000000000000000000000000

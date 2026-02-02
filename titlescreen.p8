@@ -1,7 +1,7 @@
 pico-8 cartridge // http://www.pico-8.com
 version 42
 __lua__
-function _init()
+function titlescreen_init()
 --animate the lights
 bulb1=128
 bulb1max=130
@@ -17,9 +17,10 @@ light4=163
 light4max=165
 titletimer=0
 anititle_speed=15
+	reload(0x0000, 0x0000, 0x4000, "titlescreen.p8")
 end
 
-function _update()
+function titlescreen_update()
 if titletimer<anititle_speed then
 	titletimer+=1
 	else
@@ -40,11 +41,18 @@ if titletimer<anititle_speed then
 		end
 	titletimer=0
 	end
+
+	if btnp(❎) then
+		player_init()
+		isOnTitleScreen = false
+	end
 end
 
-function _draw()
-cls()
+function titlescreen_draw()
 
+	if (isOnTitleScreen == false) then
+		return
+	end
 map(0,0,0,0,20,15)
 
 spr(bulb1,56,56)
@@ -59,7 +67,24 @@ spr(light3,64,64)
 
 spr(light4,72,64)
 
+print("press x to play", 33, 120, 7)
+
 end
+
+function _init()
+	titlescreen_init()
+end
+
+function _update()
+	titlescreen_update()
+end
+
+function _draw()
+	titlescreen_draw()
+end
+
+
+
 __gfx__
 00000000888888880000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
 00000000888888880000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
