@@ -1,0 +1,12 @@
+-----------BLACKBOX GUIDE-----------
+
+CONTROLS:
+Move - UP, DOWN, LEFT, RIGHT Arrow Keys
+Z - Switch Weapons
+X - Shoot
+
+
+
+FEATURES:
+White Boxes - Touching them teleports you to another dimension
+Random Events - Random scary events will happen at random times
