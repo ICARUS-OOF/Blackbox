@@ -62,7 +62,7 @@ projectiles = {}
 
 -- Function to create a projectile
 function spawn_projectile(x, y, dx, dy, lifetime)
-  add(projectiles, {x = x, y = y, dx = dx, dy = dy, lifeLeft = lifetime})
+  add(projectiles, {x = x, y = y, dx = dx, dy = dy, lifeLeft = lifetime, bulletType = player.currentSelectedWeapon})
 end
 
 -- Function to update all projectiles
@@ -84,11 +84,11 @@ end
 
 function draw_projectiles()
     for p in all(projectiles) do
-      if (player.currentSelectedWeapon == 0) then
+      if (p.bulletType == 0) then
         spr(231, p.x, p.y, 2, 2, false)
-      elseif (player.currentSelectedWeapon == 1) then
+      elseif (p.bulletType == 1) then
         spr(150, p.x, p.y, 1, 1, false)
-      elseif (player.currentSelectedWeapon == 2) then
+      elseif (p.bulletType == 2) then
         spr(187, p.x, p.y, 2, 2, false)
       end
     end
